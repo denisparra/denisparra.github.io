@@ -1,4 +1,4 @@
 denisparra.github.io
 ====================
 
-Denis Parra Web Page, hosted at github
+Denis Parra Web Page, hosted at github.io
