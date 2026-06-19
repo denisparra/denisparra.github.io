@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Denis Parra — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>:root {
+  --bg: #fbfbf9;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6b6b70;
+  --line: #e7e6e1;
+  --accent: #8a1f1f;        /* deep academic red */
+  --accent-soft: #f3e9e8;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --maxw: 720px;
+  --sidebar: 300px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--accent); color: #fff; padding: .5rem 1rem;
+}
+.skip:focus { left: 1rem; top: 1rem; z-index: 10; }
+
+/* ---------- Layout ---------- */
+.layout {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 3.5rem;
+}
+
+.sidebar {
+  width: var(--sidebar);
+  flex: none;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 3rem 0;
+}
+
+.content {
+  flex: 1 1 auto;
+  max-width: var(--maxw);
+  padding: 3rem 0 4rem;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar-inner { font-family: var(--sans); }
+.avatar {
+  width: 132px; height: 132px;
+  object-fit: cover; border-radius: 50%;
+  border: 1px solid var(--line);
+  margin-bottom: 1.25rem;
+}
+.name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.85rem;
+  line-height: 1.1;
+  margin: 0 0 .35rem;
+  letter-spacing: -0.01em;
+}
+.role {
+  font-size: .82rem;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+  line-height: 1.45;
+}
+.contact, .ids {
+  font-size: .78rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+.scholar {
+  margin: 0 0 1rem;
+}
+.scholar a {
+  font-family: var(--sans);
+  font-size: .82rem;
+  font-weight: 600;
+}
+.ids a { color: var(--muted); border-bottom: 1px solid var(--line); }
+
+.toc {
+  display: flex; flex-direction: column;
+  margin: 1.25rem 0;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+.toc a {
+  font-size: .82rem;
+  color: var(--text);
+  padding: .28rem 0;
+  letter-spacing: .01em;
+}
+.toc a:hover { color: var(--accent); text-decoration: none; }
+
+.links {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+.links a {
+  font-size: .72rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .28rem .7rem;
+  color: var(--text);
+}
+.links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+/* ---------- Content ---------- */
+.section { margin-bottom: 3.25rem; scroll-margin-top: 1.5rem; }
+
+.section h2 {
+  font-family: var(--sans);
+  font-size: .82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--accent);
+  margin: 0 0 1.4rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--line);
+}
+.section h3 {
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin: 1.6rem 0 .5rem;
+}
+
+.section p { font-size: 1.05rem; line-height: 1.62; }
+.lead { font-size: 1.18rem; line-height: 1.58; margin-top: 0; }
+.note {
+  font-size: .92rem;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: .8rem 1rem;
+  border-radius: 0 6px 6px 0;
+  color: #4a2020;
+}
+
+/* News */
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list li {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 1rem;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.news-date {
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  padding-top: .15rem;
+}
+.news-text { font-size: .96rem; }
+
+/* Projects */
+.project { margin-bottom: 1.5rem; }
+.project p { margin: .3rem 0 .5rem; }
+.refs { font-family: var(--sans); font-size: .82rem; list-style: none; margin: 0; padding: 0; }
+.refs li { padding: .18rem 0; color: var(--muted); }
+
+/* Publications */
+.pubs { padding-left: 1.2rem; }
+.pubs li { margin-bottom: 1rem; font-size: .98rem; }
+.venue { color: var(--muted); font-style: italic; }
+
+/* Columns */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.cols ul, .alumni { font-size: .9rem; padding-left: 1.1rem; margin: .3rem 0; }
+.cols li, .alumni li { margin-bottom: .35rem; }
+.alumni { columns: 2; column-gap: 2rem; }
+
+.terms { list-style: none; padding: 0; font-size: .9rem; }
+.terms li { padding: .3rem 0; border-bottom: 1px solid var(--line); }
+.term {
+  font-family: var(--sans);
+  font-size: .7rem; font-weight: 600;
+  color: var(--accent);
+  display: inline-block; min-width: 64px;
+}
+
+.more { font-family: var(--sans); font-size: .85rem; margin-top: 1rem; }
+
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 880px) {
+  .layout { flex-direction: column; gap: 0; padding: 0 1.4rem; }
+  .sidebar {
+    position: static; height: auto; width: 100%;
+    padding: 2rem 0 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .sidebar-inner { display: grid; grid-template-columns: auto 1fr; gap: 0 1.4rem; align-items: start; }
+  .avatar { width: 96px; height: 96px; grid-row: span 2; margin-bottom: 0; }
+  .toc { flex-direction: row; flex-wrap: wrap; gap: .2rem .9rem; grid-column: 1 / -1; }
+  .links { grid-column: 1 / -1; }
+  .content { padding: 2rem 0 3rem; max-width: 100%; }
+  .cols, .alumni { grid-template-columns: 1fr; columns: 1; }
+  .news-list li { grid-template-columns: 1fr; gap: .2rem; }
+}
+</style></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="layout"><aside class="sidebar"><div class="sidebar-inner">
+  <img class="avatar" src="https://dparra.ing.uc.cl/img/denis-8.png?v=2" alt="Photo of Denis Parra">
+  <h1 class="name">Denis Parra</h1>
+  <p class="role">Associate Professor, Computer Science — PUC Chile</p>
+  <p class="contact">denis.parra[at]uc[dot]cl<br>Pontificia Universidad Católica de Chile<br>Departamento de Ciencia de la Computación<br>Vicuña Mackenna 4860, Macul, Santiago, Chile</p>
+  <p class="scholar"><a href="http://scholar.google.com/citations?user=aQ9TkcIAAAAJ">Google Scholar Profile &rarr;</a></p>
+  <p class="ids">ORCID: <a href="https://orcid.org/0000-0001-9878-8761">0000-0001-9878-8761</a><br>
+  WoS ID: <a href="https://www.webofscience.com/wos/author/record/D-1388-2014">D-1388-2014</a></p>
+  <nav class="toc">
+    <a href="#about">About</a><a href="#news">News</a><a href="#projects">Projects</a>
+    <a href="#publications">Publications</a><a href="#students">Students</a>
+    <a href="#teaching">Teaching</a><a href="#service">Service</a>
+  </nav>
+  <div class="links"><a href="http://scholar.google.com/citations?user=aQ9TkcIAAAAJ">Google Scholar</a><a href="https://dparra.ing.uc.cl/pdfs2/DParra_CV.pdf">CV (PDF)</a><a href="https://github.com/PUC-RecSys-Class/RecSysPUC-2024-2">RecSys Course (PUC)</a><a href="https://github.com/gasevi/pyreclab">pyRecLab</a><a href="http://www.slideshare.net/denisparra/">Slides (SlideShare)</a></div>
+</div></aside>
+<main class="content" id="main">
+
+<section id="about" class="section">
+  <p class="lead">
+    Hi! I am Denis, Associate Professor at the
+    <a href="http://www.ing.puc.cl/ciencia-de-la-computacion/">Department of Computer Science</a>,
+    in the <a href="http://www.ing.puc.cl/">School of Engineering</a> at
+    <a href="http://www.uc.cl">PUC Chile</a>. I am principal researcher at the Millennium Institute for
+    Intelligent Healthcare Engineering (<a href="https://i-health.cl/">iHealth</a>), associate researcher
+    at the National Center for Artificial Intelligence (<a href="https://www.cenia.cl">CENIA</a>), and
+    adjunct researcher at the Millennium Institute for Research on Fundamentals of Data
+    (<a href="https://imfd.cl">IMFD</a>).
+  </p>
+  <p>
+    I hold a professional title of Civil Engineer in Informatics (class of 2004) from
+    <a href="http://www.uach.cl">UACh, Valdivia, Chile</a>, and a Ph.D. in Information Science from the
+    <a href="http://ischool.pitt.edu/">University of Pittsburgh, USA</a>, where I was supervised by
+    <a href="https://www.pitt.edu/~peterb/research.html">Prof. Peter Brusilovsky</a>. I earned a Fulbright
+    scholarship to pursue my PhD studies between 2008–2013.
+  </p>
+  <p>
+    My research interests are <strong>Recommender Systems</strong>,
+    <strong>Applications of Artificial Intelligence</strong> (Medical AI, Creative AI), and
+    <strong>Intelligent User Interfaces</strong>. My work has appeared in leading AI venues including ICML,
+    NeurIPS, ICLR, ACL, and CVPR. I lead the
+    <a href="http://haivis.ing.puc.cl">Human-centered AI and Visualization (HAIVis)</a> group, co-lead the
+    <a href="https://creativai-uc.github.io/">CreativAI Lab</a> with Prof. Rodrigo Cádiz, and am a faculty
+    member of the <a href="http://ialab.ing.puc.cl">PUC IA Lab</a>.
+  </p>
+  <p class="note">
+    Interested in these topics and want to work with me as a Master's or PhD student? Email me at
+    denis.parra[at]uc[dot]cl.
+  </p>
+</section>
+
+<section id="news" class="section">
+  <h2>News</h2>
+  <ul class="news-list"><li><span class="news-date">June 2026</span><span class="news-text">PhD student Pablo Messina (first author), in collaboration with KAUST, had a paper accepted at <strong>CVPR 2026</strong>. It introduces CURE, an adaptive curriculum-learning method that helps models like MedGemma improve on visually grounded report generation. <a href="https://arxiv.org/abs/2601.15408">CURE paper</a>.</span></li><li><span class="news-date">April 2026</span><span class="news-text">Paper presented at <strong>ICLR 2026</strong> in Rio de Janeiro, Brazil — a collaboration with CENIA on redundancy of Transformer layers, introducing a method that identifies such layers better than prior cosine-similarity approaches. <a href="https://openreview.net/forum?id=mRLnS8jQWt">ICLR paper</a>.</span></li><li><span class="news-date">December 2025</span><span class="news-text">Presented a paper at <strong>NeurIPS 2025</strong> in San Diego — "A compressive-expressive communication framework for compositional representations", with Rafael Elberg (MSc) and Prof. Mircea Petrache (Math, PUC). <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/115077">NeurIPS poster</a>.</span></li><li><span class="news-date">September 2025</span><span class="news-text">Attended <strong>MICCAI 2025</strong> in Daejeon, South Korea, presenting two papers in the HAIC workshop. <a href="https://haic-miccai.github.io/#/">HAIC workshop</a>.</span></li><li><span class="news-date">August 2024</span><span class="news-text">Attended <strong>ACL 2024</strong> in Bangkok — one Findings paper on leveraging LLMs and medical knowledge for radiological text representation, and two BioNLP workshop papers on report generation led by Oscar Loch and Diego Campanini. <a href="https://aclanthology.org/2024.findings-acl.236/">ACL Findings</a>.</span></li><li><span class="news-date">July 2024</span><span class="news-text">Attended <strong>ICML 2024</strong> in Vienna, presenting "On the Unexpected Effectiveness of Reinforcement Learning for Sequential Recommendation" with MSc student Álvaro Labarca and Rodrigo Toro. <a href="https://proceedings.mlr.press/v235/silva24b.html">ICML paper</a>.</span></li><li><span class="news-date">March 2024</span><span class="news-text">Program Chair of the <strong>ACM IUI 2024</strong> conference (with Dorota Głowacka and Ofra Amir), held in Greenville, SC, USA. <a href="https://iui.acm.org/2024/index.html">IUI 2024</a>.</span></li><li><span class="news-date">Apr–Sep 2023</span><span class="news-text">Sabbatical leave at <strong>KU Leuven</strong>, Belgium, researching XAI and text report generation from medical images.</span></li></ul>
+  <p class="more"><a href="https://dparra.ing.uc.cl/news.html">Older news →</a></p>
+</section>
+
+<section id="projects" class="section"><h2>Selected Projects</h2><div class="project"><h3>Automatic Radiology Report Generation from Chest X-rays</h3><p>Vision–language and multimodal models that generate clinically correct radiological reports from chest X-rays, with work on anatomy grounding, curriculum learning, and evaluation.</p><ul class="refs"><li><a href="https://arxiv.org/abs/2601.15408">Messina et al., CVPR 2026 — CURE</a></li><li><a href="https://aclanthology.org/2024.findings-acl.236/">Messina et al., ACL 2024 — Extracting and Encoding</a></li><li><a href="https://link.springer.com/chapter/10.1007/978-3-030-87589-3_67">Pino et al., MICCAI 2021 — CNN-TRG templates</a></li><li><a href="http://www.cse.cuhk.edu.hk/~qdou/public/medneurips2022/64.pdf">Messina et al., Med-NeurIPS 2022 — Two-stage CRG</a></li><li><a href="https://dl.acm.org/doi/abs/10.1145/3522747">Survey: Deep Learning for Radiology Report Generation (ACM CSUR)</a></li></ul></div><div class="project"><h3>Intelligent User Interfaces for Recommender Systems</h3><p>Interactive and hybrid recommendation interfaces — TalkExplorer (multiple prospects of relevance), SetFusion (hybrid recommendation of conference papers), and Moodplay (music artist recommendation).</p><ul class="refs"><li><a href="https://doi.org/10.1145/2449396.2449442">TalkExplorer — IUI</a></li><li><a href="https://doi.org/10.1016/j.ijhcs.2015.01.007">SetFusion — journal (IJHCS)</a></li><li><a href="https://doi.org/10.1145/2930238.2930280">Moodplay — AVI</a></li><li><a href="https://doi.org/10.1016/j.eswa.2016.02.013">Survey on Interactive Recommender Systems (ESWA)</a></li></ul></div></section>
+
+<section id="publications" class="section">
+  <h2>Latest Publications</h2>
+  <ol class="pubs"><li>Messina, P., Vidal, R., Parra, D., Soto, Á., & Araujo, V. (2024). <a href="https://aclanthology.org/2024.findings-acl.236/"><strong>Extracting and Encoding: Leveraging Large Language Models and Medical Knowledge to Enhance Radiological Text Representation</strong></a>. <span class="venue">Findings of the ACL 2024 (pp. 3955–3986)</span>.</li><li>Labarca-Silva, Á., Parra, D., & Toro Icarte, R. (2024). <a href="https://proceedings.mlr.press/v235/silva24b.html"><strong>On the Unexpected Effectiveness of Reinforcement Learning for Sequential Recommendation</strong></a>. <span class="venue">ICML 2024</span>.</li><li>Garretón, M., Morini, F., Celhay, P., Dörk, M., & Parra, D. (2023). <a href="https://doi.ieeecomputersociety.org/10.1109/TVCG.2023.3248319"><strong>Attitudinal Effects of Data Visualizations and Illustrations in Data Stories</strong></a>. <span class="venue">IEEE Transactions on Visualization and Computer Graphics</span>.</li></ol>
+  <p class="more"><a href="https://scholar.google.com/citations?user=aQ9TkcIAAAAJ">More on Google Scholar →</a></p>
+</section>
+
+<section id="students" class="section">
+  <h2>Students</h2>
+  <div class="cols">
+    <div><h3>PhD</h3><ul><li>Pablo Messina (co-advised, Prof. Álvaro Soto) — Grounded VQA and radiology report generation</li><li>Ivania Donoso (co-advised, Prof. Katrien Verbert, KU Leuven) — HCAI for explainable medical AI</li><li>Oscar Loch — Medical image-based diagnosis in the long tail</li><li>Pablo Poblete</li><li>Gabriel Acevedo</li><li>Joaquín de Ferrari (co-advised, Prof. Jocelyn Dunstan) — Multimodal image-based diagnosis</li></ul></div>
+    <div><h3>MSc</h3><ul><li>Alfredo Mahns — RL for music generation</li><li>Francisco Madariaga — VL models for radiology report generation</li><li>Pedro Palma (co-advised, Prof. Rodrigo Toro) — RL recommender systems</li><li>Alonso Tamayo</li><li>Juan Manuel Hernández</li><li>Alejandro Plaza</li></ul></div>
+  </div>
+  <h3>Alumni</h3>
+  <ul class="alumni"><li>Jorge Facuse, MSc</li><li>Gregory Schuit, MSc</li><li>Manuela Garretón, PhD — now Prof., School of Design, UC Chile</li><li>Andrés Carvallo, PhD — now at CENIA</li><li>José Miguel Herrera, PhD — now at Pangeanic</li><li>Manuel Cartagena, MSc</li><li>Pablo Pino, MSc — now at iHealth</li><li>Daniela Flores, MSc</li><li>Isidora Palma, MSc</li><li>Tamara Covacevich, MSc</li><li>Antonio Ossa, MSc (co-advised, Prof. Hans Lobel)</li><li>Pablo Messina, MSc — now PhD student, UC Chile</li><li>Ivania Donoso, MSc — now PhD student, UC Chile / KU Leuven</li><li>Lukas Svicarovic, MSc</li><li>Vicente Domínguez, MSc</li><li>María Fernanda Sepúlveda, MSc</li><li>Jorge Schellman, MSc</li><li>Maribel Alvarado, MPGI MSc — now at Bibliotecas UC</li></ul>
+</section>
+
+<section id="teaching" class="section">
+  <h2>Teaching</h2>
+  <div class="cols">
+    <div>
+      <h3>Graduate</h3>
+      <ul class="terms"><li><span class="term">2024-2</span> <a href="https://github.com/PUC-RecSys-Class/RecSysPUC-2024-2">IIC3633 Recommender Systems</a></li><li><span class="term">2024-1</span> <a href="https://github.com/denisparra/RecSysPUC-2024/">IIC3633 Recommender Systems</a></li><li><span class="term">2018-2</span> <a href="http://web.ing.puc.cl/~dparra/classes/recsys-2018-2/">Recommender Systems</a></li><li><span class="term">2017-2</span> <a href="http://web.ing.puc.cl/~dparra/classes/recsys-2017-2/">Recommender Systems</a></li><li><span class="term">2016-2</span> <a href="http://web.ing.puc.cl/~dparra/classes/recsys-2016-2/">Recommender Systems</a></li><li><span class="term">2015-2</span> <a href="http://web.ing.puc.cl/~dparra/classes/recsys-2015-2/">Recommender Systems</a></li><li><span class="term">2015-1</span> Data Mining (MPGI Master Program)</li><li><span class="term">2014-2</span> <a href="https://dparra.ing.uc.cl/classes/recsys-2014-2/Syllabus.html">Recommender Systems (CS Master Program)</a></li><li><span class="term">2014-1</span> Data Mining (MPGI Master Program)</li></ul>
+    </div>
+    <div>
+      <h3>Undergraduate</h3>
+      <ul class="terms"><li><span class="term">2024-1</span> Introduction to Programming</li><li><span class="term">2018-2</span> Information Visualization</li><li><span class="term">2018-1</span> Introduction to the Major in Computer Science</li><li><span class="term">2017-2</span> Information Visualization</li><li><span class="term">2017-1</span> Introduction to the Major in Computer Science</li><li><span class="term">2014–2016</span> Introduction to the Major in Computer Science</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="service" class="section">
+  <h2>Academic Service</h2>
+  <h3>Workshop Organization</h3><ul><li><a href="https://sites.google.com/view/esida2018/">ESIDA 2018 (at IUI 2018)</a></li><li><a href="https://lsrs2017.wordpress.com/">LSRS 2017 (at RecSys 2017)</a></li><li><a href="http://socialcomputing.ing.puc.cl/sps2015/">Social Personalization and Search (at SIGIR 2015)</a></li><li><a href="http://columbus.exp.sis.pitt.edu/sp2014/">Social Personalization (at HT 2014)</a></li></ul>
+  <div class="cols">
+    <div>
+      <h3>Journal Reviews</h3><ul><li>International Journal of Human-Computer Studies</li><li>ACM TiiS (distinguished reviewer)</li><li>Interacting with Computers, Oxford University Press</li><li>Computer Communications, Elsevier</li><li>Social Network Analysis and Mining, Springer</li><li>Knowledge-Based Systems, Elsevier</li></ul>
+    </div>
+    <div>
+      <h3>Conference Reviews</h3><ul><li>2026: ICML, IUI, RecSys</li><li>2025: ACL, ICML, NeurIPS, IUI, RecSys</li><li>2024: IUI, RecSys</li><li>2017–2018: WWW, RecSys, UMAP, IUI</li><li>2015–2016: WWW, IUI, CIKM, CHI, RecSys (posters & demos)</li><li>2012–2014: Hypertext, EDM, SocialCom, WWW Web Science, Web Intelligence</li></ul>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><p>© 2026 Denis Parra. Built with Jekyll. Static preview of the redesign draft.</p></footer>
+</main></div></body></html>
